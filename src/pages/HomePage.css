@@ -1,0 +1,222 @@
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #F5F3FF 0%, #EEF2FF 50%, #F9FAFB 100%);
+  padding: 80px 0 64px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-eyebrow { margin-bottom: 20px; }
+
+.hero-headline {
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.hero-subhead {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--color-text-secondary);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.hero-input {
+  max-width: 680px;
+  margin: 0 auto 24px;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+.hero-stats .dot { color: var(--color-border); }
+
+/* Stages */
+.stages-section { padding: 64px 0; }
+
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.stage-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+.stage-card:hover {
+  border-color: var(--stage-color);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.stage-card:hover .stage-icon { background: var(--stage-light); }
+
+.stage-icon {
+  font-size: 28px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+}
+
+.stage-content { flex: 1; }
+.stage-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+.stage-desc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.stage-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--stage-color);
+}
+
+/* How it works */
+.how-section {
+  padding: 64px 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.how-card { gap: 12px; display: flex; flex-direction: column; }
+
+.how-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Workflows preview */
+.workflows-preview { padding: 64px 0; }
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.workflow-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.workflow-preview-card { display: flex; flex-direction: column; gap: 12px; }
+.workflow-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.workflow-name { font-size: 17px; font-weight: 700; }
+
+.workflow-steps-preview {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-arrow { color: var(--color-text-tertiary); font-size: 14px; }
+
+/* Value props */
+.value-section {
+  padding: 64px 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.value-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.value-icon { font-size: 28px; }
+.value-card h3 { font-size: 15px; font-weight: 700; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stages-grid { grid-template-columns: repeat(3, 1fr); }
+  .how-grid { grid-template-columns: repeat(2, 1fr); }
+  .value-grid { grid-template-columns: repeat(2, 1fr); }
+  .workflow-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 48px 0 40px; }
+  .stages-section, .how-section, .workflows-preview, .value-section { padding: 48px 0; }
+  .stages-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-grid, .value-grid { grid-template-columns: 1fr; }
+  .workflow-cards { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .stages-grid { grid-template-columns: 1fr; }
+  .stage-card { flex-direction: row; align-items: flex-start; }
+}
