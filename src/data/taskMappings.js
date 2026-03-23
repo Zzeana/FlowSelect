@@ -332,6 +332,56 @@ export const examplePrompts = [
   'Map the user journey for a checkout flow',
 ]
 
+// Example project briefs shown in project mode
+export const exampleBriefs = [
+  `We're redesigning our mobile banking app. We need to conduct user interviews with 20 customers, synthesize findings into personas, wireframe new flows, and run usability tests before the final handoff.`,
+  `New e-commerce product launch. The project covers competitive analysis, concept ideation with mood boards, high-fidelity UI design, and a/b testing the checkout flow.`,
+  `Onboarding redesign for a B2B SaaS tool. Involves analyzing existing session recordings, mapping the current user journey, prototyping 3 new onboarding flows, and validating with 5 usability tests.`,
+]
+
+// Keywords that signal each workflow stage in a project brief
+const stageSignals = {
+  research: ['research', 'interview', 'user interview', 'survey', 'discover', 'understand users', 'user need', 'pain point', 'usability test', 'feedback', 'data', 'session recording', 'analytics', 'participant', 'recruit'],
+  synthesis: ['synthesize', 'analyze', 'insight', 'theme', 'pattern', 'affinity', 'repository', 'finding', 'persona', 'cluster', 'group', 'tag', 'code'],
+  ideation: ['ideate', 'brainstorm', 'concept', 'idea', 'explore', 'creative', 'mood board', 'moodboard', 'visual direction', 'direction', 'design concept', 'sketch', 'inspiration'],
+  prototyping: ['prototype', 'wireframe', 'mockup', 'mock-up', 'hi-fi', 'high fidelity', 'low fidelity', 'lo-fi', 'build', 'design', 'ui', 'interface', 'screen', 'flow', 'handoff', 'component'],
+  testing: ['test', 'validate', 'usability test', 'a/b test', 'evaluate', 'iterate', 'feedback', 'launch', 'measure'],
+}
+
+// Analyzes a project brief and returns per-stage tool recommendations.
+// Returns { stageResults: [{ stageId, stageName, stageIcon, tools }], detectedCount }
+export function analyzeProjectBrief(text, allTools) {
+  if (!text || text.trim().length < 10) return { stageResults: [], detectedCount: 0 }
+
+  const lowerText = text.toLowerCase()
+
+  // Score each stage by how many of its signal keywords appear in the brief
+  const stageScores = Object.entries(stageSignals).map(([stageId, keywords]) => {
+    const hits = keywords.filter(k => lowerText.includes(k))
+    return { stageId, score: hits.length }
+  })
+
+  const detectedStages = stageScores
+    .filter(s => s.score > 0)
+    .sort((a, b) => b.score - a.score)
+
+  // For each detected stage, run recommendations scoped to that stage's tools,
+  // then fall back to all-tools recommendations if stage-scoped yields nothing.
+  const stageResults = detectedStages
+    .map(({ stageId }) => {
+      const stageTools = allTools.filter(t => t.workflowStages.includes(stageId))
+      const recs = recommendTools(text, stageTools).slice(0, 3)
+      // If no keyword match, pick the top-rated tools for the stage directly
+      const finalRecs = recs.length > 0
+        ? recs
+        : stageTools.slice(0, 2).map(t => ({ ...t, matchExplanation: `Commonly used in the ${stageId} stage` }))
+      return { stageId, tools: finalRecs }
+    })
+    .filter(s => s.tools.length > 0)
+
+  return { stageResults, detectedCount: detectedStages.length }
+}
+
 // Core recommendation engine
 export function recommendTools(query, allTools) {
   if (!query || query.trim().length < 2) return []

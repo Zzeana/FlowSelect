@@ -195,6 +195,257 @@
 
 .stage-links { display: flex; flex-wrap: wrap; gap: 10px; }
 
+/* ── Recommended Tool Stack ───────────────────────────────── */
+.tool-stack-card {
+  background: var(--color-surface);
+  border: 2px solid #7C3AED;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.tool-stack-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tool-stack-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.tool-stack-summary {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+.tool-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.stack-tool-row {
+  display: grid;
+  grid-template-columns: 32px 1fr 2fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+}
+.stack-tool-row:hover { background: var(--color-bg); }
+
+.stack-tool-rank {
+  width: 24px;
+  height: 24px;
+  background: #F5F3FF;
+  color: #7C3AED;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stack-tool-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.stack-tool-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.stack-tool-stage {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.stack-tool-reason {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.stack-tool-meta { display: flex; flex-wrap: wrap; gap: 4px; flex-shrink: 0; }
+
+.tool-stack-actions { padding-top: 12px; border-top: 1px solid var(--color-border); }
+
+/* ── Project mode ─────────────────────────────────────────── */
+.project-mode-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.badge-project {
+  background: #F5F3FF;
+  color: #7C3AED;
+  border-color: transparent;
+}
+
+.project-brief-preview {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border-left: 3px solid #7C3AED;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Pipeline overview bar */
+.project-pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 36px;
+}
+
+.pipeline-stage {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pipeline-step-num {
+  width: 22px;
+  height: 22px;
+  background: var(--stage-color);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pipeline-stage-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--stage-color);
+  background: var(--stage-light);
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: opacity var(--transition);
+}
+.pipeline-stage-label:hover { opacity: 0.8; }
+
+.pipeline-icon { font-size: 14px; }
+
+.pipeline-arrow {
+  color: var(--color-text-tertiary);
+  font-size: 16px;
+  padding: 0 2px;
+}
+
+/* Step-by-step workflow */
+.project-workflow {
+  display: flex;
+  flex-direction: column;
+}
+
+.workflow-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0 20px;
+  margin-bottom: 8px;
+}
+
+.workflow-step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.workflow-step-num {
+  width: 40px;
+  height: 40px;
+  background: var(--stage-color);
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--stage-light);
+}
+
+.workflow-step-line {
+  width: 2px;
+  flex: 1;
+  background: var(--color-border);
+  margin: 12px 0 0;
+  min-height: 32px;
+}
+
+.workflow-step-body {
+  padding-bottom: 36px;
+}
+
+.workflow-step-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: var(--stage-light);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--stage-color);
+}
+
+.workflow-step-icon { font-size: 28px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+
+.workflow-step-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.workflow-step-header .btn-ghost { margin-left: auto; flex-shrink: 0; }
+
+.project-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .project-tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 900px) {
   .reco-top { grid-template-columns: 1fr; }
   .reco-others { grid-template-columns: 1fr; }
@@ -204,4 +455,11 @@
   .reco-best { padding: 20px; }
   .reco-best-details { flex-direction: column; gap: 12px; }
   .reco-compare-cta { flex-direction: column; align-items: flex-start; }
+  .project-pipeline { padding: 12px 14px; }
+  .pipeline-arrow { display: none; }
+  .workflow-step { grid-template-columns: 36px 1fr; gap: 0 12px; }
+  .workflow-step-num { width: 32px; height: 32px; font-size: 14px; }
+  .workflow-step-header { flex-direction: column; gap: 10px; }
+  .workflow-step-header .btn-ghost { margin-left: 0; }
+  .project-tools-grid { grid-template-columns: 1fr; }
 }

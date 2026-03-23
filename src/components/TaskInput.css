@@ -1,5 +1,46 @@
 .task-input-wrapper { width: 100%; }
 
+/* ── Mode toggle ──────────────────────────────────────────── */
+.mode-toggle {
+  display: inline-flex;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  margin-bottom: 12px;
+  gap: 2px;
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.mode-btn:hover { color: var(--color-text); background: var(--color-surface); }
+.mode-btn.active {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+/* Active task mode — accent tint */
+.mode-btn:first-child.active { color: var(--color-accent); }
+/* Active project mode — purple tint */
+.mode-btn:last-child.active { color: #7C3AED; }
+
+.mode-icon { font-size: 15px; line-height: 1; }
+
+/* ── Task mode (existing) ─────────────────────────────────── */
 .task-input-form { margin-bottom: 12px; }
 
 .task-input-field {
@@ -65,10 +106,66 @@
   background: var(--color-accent-light);
 }
 
+/* ── Project mode ─────────────────────────────────────────── */
+.project-input-form { display: flex; flex-direction: column; }
+
+.project-input-field {
+  background: var(--color-surface);
+  border: 2px solid #7C3AED;
+  border-radius: var(--radius-lg);
+  padding: 16px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow var(--transition);
+}
+.project-input-field:focus-within {
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.1);
+}
+
+.project-input-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #7C3AED;
+}
+
+.project-textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--color-text);
+  background: transparent;
+  resize: vertical;
+  line-height: 1.6;
+  min-height: 120px;
+}
+.project-textarea::placeholder { color: var(--color-text-tertiary); }
+
+.project-input-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-input-hint {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  flex: 1;
+}
+
 @media (max-width: 600px) {
   .task-input-field { padding: 6px 6px 6px 12px; }
   .task-input { font-size: 15px; }
   .task-input-submit span { display: none; }
   .example-prompts { gap: 6px; }
   .example-chip { font-size: 12px; padding: 4px 10px; }
+  .project-input-footer { flex-direction: column; align-items: flex-start; }
+  .mode-btn { padding: 6px 12px; font-size: 13px; }
 }
